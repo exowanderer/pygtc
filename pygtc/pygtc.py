@@ -561,7 +561,7 @@ def plotGTC(chains, **kwargs):
 
     xlabel_kwargs = {}
     if 'xlabelpad' in customLabelFont.keys():
-        xlabelpad = customLabelFont['ylabelpad']
+        xlabelpad = customLabelFont['xlabelpad']
         xlabel_kwargs['labelpad'] = customLabelFont['xlabelpad']
         del customLabelFont['xlabelpad']
 
