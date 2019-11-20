@@ -249,11 +249,6 @@ def plotGTC(chains, **kwargs):
 
     priorColor = '#333333'
 
-    # Angle of tick labels
-    tickAngle = 45
-    if 'tickAngle' in customTickFont.keys():
-        tickAngle = customTickFont['tickAngle']
-
     # Dictionary of size types or whatever:
     mplPPI = plt.rcParams['figure.dpi']  # Matplotlib dots per inch
     figSizeDict = {'APJ_column': 245.26653 / mplPPI,
@@ -560,6 +555,12 @@ def plotGTC(chains, **kwargs):
         customTickFont['size'] = defaultTickFontSize
     if 'family' not in customTickFont.keys():
         customTickFont['family'] = defaultFontFamily
+
+    # Angle of tick labels
+    tickAngle = 45
+
+    if 'tickAngle' in customTickFont.keys():
+        tickAngle = customTickFont['tickAngle']
 
     xlabelpad = None
     xlabel_kwargs = {}
