@@ -561,6 +561,7 @@ def plotGTC(chains, **kwargs):
 
     if 'tickAngle' in customTickFont.keys():
         tickAngle = customTickFont['tickAngle']
+        del customTickFont['tickAngle']
 
     xlabelpad = None
     xlabel_kwargs = {}
