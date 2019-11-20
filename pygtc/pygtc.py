@@ -739,7 +739,7 @@ def plotGTC(chains, **kwargs):
                     for xLabel in ax.get_xticklabels():
                         if labelRotation[0]:
                             xLabel.set_rotation(tickAngle)
-                            xLabel.set_horizontalalignment('right')
+                            xLabel.set_horizontalalignment('left')
 
                         # Add a custom attribute to the tick label object
                         xLabel.custom_shift = shiftXdata
@@ -773,7 +773,7 @@ def plotGTC(chains, **kwargs):
                     for yLabel in ax.get_yticklabels():
                         if labelRotation[1]:
                             yLabel.set_rotation(tickAngle)
-                            yLabel.set_verticalalignment('top')
+                            yLabel.set_verticalalignment('bottom')
 
                         # Add a custom attribute to the tick label object
                         yLabel.custom_shift = shiftYdata
