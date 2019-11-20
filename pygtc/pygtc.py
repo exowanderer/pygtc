@@ -771,8 +771,6 @@ def plotGTC(chains, **kwargs):
                     shiftYdata = 1.0 * shiftY * deltaY / numTicksY
 
                     for yLabel in ax.get_yticklabels():
-                        if ylabelpad is not None:
-                            yLabel.set_position((ylabelpad, 0))
                         if labelRotation[1]:
                             yLabel.set_rotation(tickAngle)
                             yLabel.set_verticalalignment('top')
@@ -907,8 +905,6 @@ def plotGTC(chains, **kwargs):
 
             # Rotate tick labels
             for xLabel in ax.get_xticklabels():
-                if xlabelpad is not None:
-                    xLabel.set_position((0, xlabelpad))
                 if labelRotation[0]:
                     xLabel.set_rotation(tickAngle)
                     xLabel.set_horizontalalignment('right')
