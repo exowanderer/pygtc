@@ -666,7 +666,7 @@ def plotGTC(chains, **kwargs):
 
                             if ylabelpad is not None:
                                 yLabel = ax.yaxis.get_label()
-                                yLabel.set_position((0, ylabelpad))
+                                yLabel.set_position((ylabelpad, 0))
                     else:
                         ax.get_yaxis().set_ticklabels([])
 
@@ -855,7 +855,7 @@ def plotGTC(chains, **kwargs):
 
                     if xlabelpad is not None:
                         xLabel = ax.xaxis.get_label()
-                        xLabel.set_position((0, xlabelpad))
+                        xLabel.set_position((xlabelpad, 0))
 
                 # Hack to get scaling to work for final 1D plot under MPL < 2.0
                 if (MPLVER < 2) and (smoothingKernel == 0):
