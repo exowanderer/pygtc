@@ -651,30 +651,38 @@ def plotGTC(chains, **kwargs):
                     # x-labels at bottom of plot only
                     if i == nDim - 1:
                         if paramNames is not None:
+                            position = (0.0, 0.5),
+                            if xlabelpad is not None:
+                                position = (xlabelpad, 0.5),
+
                             ax.set_xlabel(paramNames[j],
-                                          position=(xlabelpad, 0.5),
+                                          position=position,
                                           **xlabel_kwargs)
 
-                            if xlabelpad is not None:
-                                ax.xaxis.set_label_coords(xlabelpad, 0.5)
-                                # xLabel = ax.xaxis.get_label()
-                                # xLabel.set_position((xlabelpad, 0.5))
-                                # print(xLabel)
+                            # if xlabelpad is not None:
+                            #     ax.xaxis.set_label_coords(xlabelpad, 0.5)
+                            #     # xLabel = ax.xaxis.get_label()
+                            #     # xLabel.set_position((xlabelpad, 0.5))
+                            #     # print(xLabel)
                     else:
                         ax.get_xaxis().set_ticklabels([])
 
                     # y-labels for left-most panels only
                     if j == 0:
                         if paramNames is not None:
+                            position = (0.5, 0)
+                            if ylabelpad is not None:
+                                position = (0.5, ylabelpad)
+
                             ax.set_ylabel(paramNames[i],
-                                          position=(0.5, ylabelpad),
+                                          position=position,
                                           **ylabel_kwargs)
 
-                            if ylabelpad is not None:
-                                ax.yaxis.set_label_coords(0.5, ylabelpad)
-                                # yLabel = ax.yaxis.get_label()
-                                # yLabel.set_position((ylabelpad, 0.5))
-                                # print(yLabel)
+                            # if ylabelpad is not None:
+                            #     ax.yaxis.set_label_coords(0.5, ylabelpad)
+                            #     # yLabel = ax.yaxis.get_label()
+                            #     # yLabel.set_position((ylabelpad, 0.5))
+                            #     # print(yLabel)
                     else:
                         ax.get_yaxis().set_ticklabels([])
 
@@ -859,15 +867,19 @@ def plotGTC(chains, **kwargs):
             # x-label for bottom-right panel only and a scaling hack
             if i == nDim - 1:
                 if paramNames is not None:
+                    position = (0.0, 0.5),
+                    if xlabelpad is not None:
+                        position = (xlabelpad, 0.5),
+
                     ax.set_xlabel(paramNames[i],
-                                  position=(xlabelpad, 0.5),
+                                  position=position,
                                   **xlabel_kwargs)
 
-                    if xlabelpad is not None:
-                        ax.xaxis.set_label_coords(xlabelpad, 0.5)
-                        # xLabel = ax.xaxis.get_label()
-                        # xLabel.set_position((0.5, xlabelpad))
-                        # print(xLabel)
+                    # if xlabelpad is not None:
+                    #     ax.xaxis.set_label_coords(xlabelpad, 0.5)
+                    #     # xLabel = ax.xaxis.get_label()
+                    #     # xLabel.set_position((0.5, xlabelpad))
+                    #     # print(xLabel)
 
                 # Hack to get scaling to work for final 1D plot under MPL < 2.0
                 if (MPLVER < 2) and (smoothingKernel == 0):
