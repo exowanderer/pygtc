@@ -566,8 +566,6 @@ def plotGTC(chains, **kwargs):
         xlabel_kwargs['labelpad'] = customLabelFont['xlabelpad']
         del customLabelFont['xlabelpad']
 
-    xlabel_kwargs['fontdict'] = customLabelFont
-
     ylabelpad = None
     ylabel_kwargs = {}
     if 'ylabelpad' in customLabelFont.keys():
@@ -576,7 +574,9 @@ def plotGTC(chains, **kwargs):
         del customLabelFont['ylabelpad']
 
     ylabel_kwargs['fontdict'] = customLabelFont
-
+    xlabel_kwargs['fontdict'] = customLabelFont
+    print(xlabel_kwargs)
+    print(ylabel_kwargs)
     # Ticks require a FontProperties instead of a font dict
     tickFontProps = mpl.font_manager.FontProperties(**customTickFont)
 
@@ -651,10 +651,11 @@ def plotGTC(chains, **kwargs):
                     # x-labels at bottom of plot only
                     if i == nDim - 1:
                         if paramNames is not None:
-                            position = (0.0, 0.5),
+                            position = (0.0, 0.5)
                             if xlabelpad is not None:
-                                position = (xlabelpad, 0.5),
+                                position = (xlabelpad, 0.5)
 
+                            print(position)
                             ax.set_xlabel(paramNames[j],
                                           position=position,
                                           **xlabel_kwargs)
@@ -867,9 +868,9 @@ def plotGTC(chains, **kwargs):
             # x-label for bottom-right panel only and a scaling hack
             if i == nDim - 1:
                 if paramNames is not None:
-                    position = (0.0, 0.5),
+                    position = (0.0, 0.5)
                     if xlabelpad is not None:
-                        position = (xlabelpad, 0.5),
+                        position = (xlabelpad, 0.5)
 
                     ax.set_xlabel(paramNames[i],
                                   position=position,
