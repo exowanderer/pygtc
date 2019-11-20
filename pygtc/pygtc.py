@@ -251,6 +251,8 @@ def plotGTC(chains, **kwargs):
 
     # Angle of tick labels
     tickAngle = 45
+    if 'tickAngle' in customTickFont.keys():
+        tickAngle = customTickFont['tickAngle']
 
     # Dictionary of size types or whatever:
     mplPPI = plt.rcParams['figure.dpi']  # Matplotlib dots per inch
