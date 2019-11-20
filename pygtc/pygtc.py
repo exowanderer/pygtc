@@ -652,6 +652,10 @@ def plotGTC(chains, **kwargs):
                     if i == nDim - 1:
                         if paramNames is not None:
                             ax.set_xlabel(paramNames[j], **xlabel_kwargs)
+
+                            if xlabelpad is not None:
+                                xLabel = ax.xaxis.get_label()
+                                xLabel.set_position((0, xlabelpad))
                     else:
                         ax.get_xaxis().set_ticklabels([])
 
@@ -659,6 +663,10 @@ def plotGTC(chains, **kwargs):
                     if j == 0:
                         if paramNames is not None:
                             ax.set_ylabel(paramNames[i], **ylabel_kwargs)
+
+                            if ylabelpad is not None:
+                                yLabel = ax.yaxis.get_label()
+                                yLabel.set_position((0, ylabelpad))
                     else:
                         ax.get_yaxis().set_ticklabels([])
 
@@ -729,9 +737,6 @@ def plotGTC(chains, **kwargs):
 
                     # Rotate tick labels
                     for xLabel in ax.get_xticklabels():
-                        if xlabelpad is not None:
-                            xLabel.set_position((0, xlabelpad))
-
                         if labelRotation[0]:
                             xLabel.set_rotation(tickAngle)
                             xLabel.set_horizontalalignment('right')
@@ -849,6 +854,10 @@ def plotGTC(chains, **kwargs):
             if i == nDim - 1:
                 if paramNames is not None:
                     ax.set_xlabel(paramNames[i], **xlabel_kwargs)
+
+                    if xlabelpad is not None:
+                        xLabel = ax.xaxis.get_label()
+                        xLabel.set_position((0, xlabelpad))
 
                 # Hack to get scaling to work for final 1D plot under MPL < 2.0
                 if (MPLVER < 2) and (smoothingKernel == 0):
