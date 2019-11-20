@@ -651,7 +651,9 @@ def plotGTC(chains, **kwargs):
                     # x-labels at bottom of plot only
                     if i == nDim - 1:
                         if paramNames is not None:
-                            ax.set_xlabel(paramNames[j], **xlabel_kwargs)
+                            ax.set_xlabel(paramNames[j],
+                                          position=(xlabelpad, 0.5),
+                                          **xlabel_kwargs)
 
                             if xlabelpad is not None:
                                 ax.xaxis.set_label_coords(xlabelpad, 0.5)
@@ -664,7 +666,9 @@ def plotGTC(chains, **kwargs):
                     # y-labels for left-most panels only
                     if j == 0:
                         if paramNames is not None:
-                            ax.set_ylabel(paramNames[i], **ylabel_kwargs)
+                            ax.set_ylabel(paramNames[i],
+                                          position=(0.5, ylabelpad),
+                                          **ylabel_kwargs)
 
                             if ylabelpad is not None:
                                 ax.yaxis.set_label_coords(0.5, ylabelpad)
@@ -855,7 +859,9 @@ def plotGTC(chains, **kwargs):
             # x-label for bottom-right panel only and a scaling hack
             if i == nDim - 1:
                 if paramNames is not None:
-                    ax.set_xlabel(paramNames[i], **xlabel_kwargs)
+                    ax.set_xlabel(paramNames[i],
+                                  position=(xlabelpad, 0.5),
+                                  **xlabel_kwargs)
 
                     if xlabelpad is not None:
                         ax.xaxis.set_label_coords(xlabelpad, 0.5)
