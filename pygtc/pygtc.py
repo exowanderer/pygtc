@@ -561,6 +561,7 @@ def plotGTC(chains, **kwargs):
 
     xlabel_kwargs = {}
     if 'xlabelpad' in customLabelFont.keys():
+        xlabelpad = customLabelFont['ylabelpad']
         xlabel_kwargs['labelpad'] = customLabelFont['xlabelpad']
         del customLabelFont['xlabelpad']
 
@@ -568,6 +569,7 @@ def plotGTC(chains, **kwargs):
 
     ylabel_kwargs = {}
     if 'ylabelpad' in customLabelFont.keys():
+        ylabelpad = customLabelFont['ylabelpad']
         ylabel_kwargs['labelpad'] = customLabelFont['ylabelpad']
         del customLabelFont['ylabelpad']
 
@@ -725,6 +727,7 @@ def plotGTC(chains, **kwargs):
 
                     # Rotate tick labels
                     for xLabel in ax.get_xticklabels():
+                        xLabel.set_position((0, xlabelpad))
                         if labelRotation[0]:
                             xLabel.set_rotation(tickAngle)
                             xLabel.set_horizontalalignment('right')
@@ -759,6 +762,7 @@ def plotGTC(chains, **kwargs):
                     shiftYdata = 1.0 * shiftY * deltaY / numTicksY
 
                     for yLabel in ax.get_yticklabels():
+                        yLabel.set_position((ylabelpad, 0))
                         if labelRotation[1]:
                             yLabel.set_rotation(tickAngle)
                             yLabel.set_verticalalignment('top')
@@ -889,6 +893,7 @@ def plotGTC(chains, **kwargs):
 
             # Rotate tick labels
             for xLabel in ax.get_xticklabels():
+                xLabel.set_position((0, xlabelpad))
                 if labelRotation[0]:
                     xLabel.set_rotation(tickAngle)
                     xLabel.set_horizontalalignment('right')
