@@ -660,11 +660,11 @@ def plotGTC(chains, **kwargs):
                                           position=position,
                                           **xlabel_kwargs)
 
-                            # if xlabelpad is not None:
-                            #     ax.xaxis.set_label_coords(xlabelpad, 0.5)
-                            #     # xLabel = ax.xaxis.get_label()
-                            #     # xLabel.set_position((xlabelpad, 0.5))
-                            #     # print(xLabel)
+                            if xlabelpad is not None:
+                                # ax.xaxis.set_label_coords(xlabelpad, 0.5)
+                                xLabel = ax.xaxis.get_label()
+                                xLabel.set_x(xlabelpad)
+                                print(xLabel)
                     else:
                         ax.get_xaxis().set_ticklabels([])
 
@@ -679,11 +679,11 @@ def plotGTC(chains, **kwargs):
                                           position=position,
                                           **ylabel_kwargs)
 
-                            # if ylabelpad is not None:
-                            #     ax.yaxis.set_label_coords(0.5, ylabelpad)
-                            #     # yLabel = ax.yaxis.get_label()
-                            #     # yLabel.set_position((ylabelpad, 0.5))
-                            #     # print(yLabel)
+                            if ylabelpad is not None:
+                                # ax.yaxis.set_label_coords(ylabelpad, 0.5)
+                                yLabel = ax.yaxis.get_label()
+                                yLabel.set_y(ylabelpad)
+                                print(yLabel)
                     else:
                         ax.get_yaxis().set_ticklabels([])
 
@@ -876,11 +876,11 @@ def plotGTC(chains, **kwargs):
                                   position=position,
                                   **xlabel_kwargs)
 
-                    # if xlabelpad is not None:
-                    #     ax.xaxis.set_label_coords(xlabelpad, 0.5)
-                    #     # xLabel = ax.xaxis.get_label()
-                    #     # xLabel.set_position((0.5, xlabelpad))
-                    #     # print(xLabel)
+                    if xlabelpad is not None:
+                        # ax.xaxis.set_label_coords(xlabelpad, 0.5)
+                        xLabel = ax.xaxis.get_label()
+                        xLabel.set_x(xlabelpad)
+                        print(xLabel)
 
                 # Hack to get scaling to work for final 1D plot under MPL < 2.0
                 if (MPLVER < 2) and (smoothingKernel == 0):
