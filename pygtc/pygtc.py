@@ -575,8 +575,7 @@ def plotGTC(chains, **kwargs):
 
     ylabel_kwargs['fontdict'] = customLabelFont
     xlabel_kwargs['fontdict'] = customLabelFont
-    print(xlabel_kwargs)
-    print(ylabel_kwargs)
+
     # Ticks require a FontProperties instead of a font dict
     tickFontProps = mpl.font_manager.FontProperties(**customTickFont)
 
@@ -651,39 +650,14 @@ def plotGTC(chains, **kwargs):
                     # x-labels at bottom of plot only
                     if i == nDim - 1:
                         if paramNames is not None:
-                            position = (0.0, 0.5)
-                            if xlabelpad is not None:
-                                position = (xlabelpad, 0.5)
-
-                            print(position)
-                            ax.set_xlabel(paramNames[j],
-                                          position=position,
-                                          **xlabel_kwargs)
-
-                            if xlabelpad is not None:
-                                # ax.xaxis.set_label_coords(xlabelpad, 0.5)
-                                xLabel = ax.xaxis.get_label()
-                                xLabel.set_x(xlabelpad)
-                                print(xLabel)
+                            ax.set_xlabel(paramNames[j], **xlabel_kwargs)
                     else:
                         ax.get_xaxis().set_ticklabels([])
 
                     # y-labels for left-most panels only
                     if j == 0:
                         if paramNames is not None:
-                            position = (0.5, 0)
-                            if ylabelpad is not None:
-                                position = (0.5, ylabelpad)
-
-                            ax.set_ylabel(paramNames[i],
-                                          position=position,
-                                          **ylabel_kwargs)
-
-                            if ylabelpad is not None:
-                                # ax.yaxis.set_label_coords(ylabelpad, 0.5)
-                                yLabel = ax.yaxis.get_label()
-                                yLabel.set_y(ylabelpad)
-                                print(yLabel)
+                            ax.set_ylabel(paramNames[i], **ylabel_kwargs)
                     else:
                         ax.get_yaxis().set_ticklabels([])
 
@@ -868,19 +842,7 @@ def plotGTC(chains, **kwargs):
             # x-label for bottom-right panel only and a scaling hack
             if i == nDim - 1:
                 if paramNames is not None:
-                    position = (0.0, 0.5)
-                    if xlabelpad is not None:
-                        position = (xlabelpad, 0.5)
-
-                    ax.set_xlabel(paramNames[i],
-                                  position=position,
-                                  **xlabel_kwargs)
-
-                    if xlabelpad is not None:
-                        # ax.xaxis.set_label_coords(xlabelpad, 0.5)
-                        xLabel = ax.xaxis.get_label()
-                        xLabel.set_x(xlabelpad)
-                        print(xLabel)
+                    ax.set_xlabel(paramNames[i], **xlabel_kwargs)
 
                 # Hack to get scaling to work for final 1D plot under MPL < 2.0
                 if (MPLVER < 2) and (smoothingKernel == 0):
@@ -985,6 +947,8 @@ def plotGTC(chains, **kwargs):
         # Apply longest spacing to all panels in last row
         longestTickLabel = 3 + np.amax(bboxSize)
         loc = (longestTickLabel / mplPPI / panelWidth)
+        if xlabelpad is not None:
+            loc = xlabelpad
         for i in range(len(axH)):
             axH[i].get_xaxis().set_label_coords(.5, -loc)
 
@@ -999,6 +963,9 @@ def plotGTC(chains, **kwargs):
         # Apply longest spacing to all panels in first column
         longestTickLabel = 2 + np.amax(bboxSize)
         loc = (longestTickLabel / mplPPI / panelHeight)
+        if ylabelpad is not None:
+            loc = ylabelpad
+
         for i in range(len(axV)):
             axV[i].get_yaxis().set_label_coords(-loc, .5)
 
